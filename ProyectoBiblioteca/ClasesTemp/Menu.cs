@@ -30,7 +30,7 @@ namespace ProyectoBiblioteca.ClasesTemp
                     for (int i = 0; i < opciones.Length; i++)
                     {
                         Console.ForegroundColor = i == opcionSeleccionada ? ConsoleColor.Black : ConsoleColor.Gray;
-                        Console.BackgroundColor = i == opcionSeleccionada ? ConsoleColor.Gray : ConsoleColor.Black;
+                        Console.BackgroundColor = i == opcionSeleccionada ? ConsoleColor.Blue : ConsoleColor.Black;
                         Console.WriteLine(opciones[i]);
                         Console.ResetColor();
                     }
