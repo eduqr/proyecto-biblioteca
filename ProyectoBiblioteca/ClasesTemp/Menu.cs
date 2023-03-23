@@ -10,7 +10,7 @@ namespace ProyectoBiblioteca.ClasesTemp
     {
         public void MenuInicio()
         {
-            string[] opciones = { "Agregar libro", "Buscar libro", "Salir" };
+            string[] opciones = { "Agregar libro", "Ver catálogo de libros", "Salir" };
             int opcionSeleccionada = 0;
             bool mostrarMenu = true;
             bool nuevaOpcionSeleccionada = true;
