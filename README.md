@@ -4,6 +4,7 @@
 ## Equipo de proyecto
 * Eduardo R.
 * Adrián V.
+* Alejandra C.
 
 ## Información útil
 
