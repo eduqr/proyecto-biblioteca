@@ -28,6 +28,7 @@ namespace ProyectoBiblioteca.Clases
 
         public void menuAccess()
         {
+            FuncionesConsola.Titulo("Inicio de sesión");
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\tv0.1.1");
             
@@ -69,18 +70,19 @@ namespace ProyectoBiblioteca.Clases
                 }
             }
 
-            Console.WriteLine("\n\n\n\t\t\t\t\t  [Ingresar] ");
-            Console.ReadKey(true);
+            //password = convertPassword(password);
 
+            Console.WriteLine("\n\n\n\t\t\t\t\t   [Ingresar] ");
+            FuncionesConsola.Continuar();
             //Console.ResetColor();
 
             if(checkAccess(username, password))
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Console.WriteLine("\n\t\t\t\t  =-=-= Acceso correcto =-=-=");
+                Console.WriteLine("\n\t\t\t\t=-=-= Acceso correcto =-=-=");
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("\n\t\t\t\t    [Ir a Panel de Control]");
+                Console.WriteLine("\n\t\t\t\t  [Ir a Panel de Control]");
                 Console.ReadKey(true);
                 Console.ResetColor();
             }
@@ -96,5 +98,25 @@ namespace ProyectoBiblioteca.Clases
                 menuAccess();
             }
         }
+
+        //public string convertPassword(string contra)
+        //{
+        //    ConsoleKeyInfo keyUser;
+        //    while ((keyUser = Console.ReadKey(true)).Key != ConsoleKey.Enter)
+        //    {
+        //        if (keyUser.Key == ConsoleKey.Backspace && contra.Length > 0)
+        //        {
+        //            contra = contra.Remove(contra.Length - 1);
+        //            Console.Write("\b \b"); // borra asterisco
+        //        }
+        //        else if (char.IsLetterOrDigit(keyUser.KeyChar))
+        //        {
+        //            contra += keyUser.KeyChar;
+        //            Console.Write("*");
+        //        }
+        //    }
+
+        //    return contra;
+        //}
     }
 }
