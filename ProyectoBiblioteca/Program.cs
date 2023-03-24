@@ -12,6 +12,7 @@ namespace ProyectoBiblioteca
             SystemLogin systemLogin = new SystemLogin();
             //menu.MenuInicio();
             systemLogin.menuAccess();
+            menu.MenuInicio();
 
             // Proximo hacer menuAccess booleana
             /*

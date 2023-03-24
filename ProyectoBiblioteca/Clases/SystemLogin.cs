@@ -28,8 +28,9 @@ namespace ProyectoBiblioteca.Clases
 
         public void menuAccess()
         {
+            FuncionesConsola.Titulo("Inicio de sesión");
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\tv0.1.1");
+            Console.WriteLine("\t\t\t\t\t\t\t\t\t\t\t\t\t\tv0.1.2");
             
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("\n\t\t\t\t +----------------------------+");
@@ -53,36 +54,20 @@ namespace ProyectoBiblioteca.Clases
             
             Console.SetCursorPosition(38, 13);
             string password = "";
+            
+            password = convertPassword(password);
 
-            ConsoleKeyInfo keyUser;
-            while ((keyUser = Console.ReadKey(true)).Key != ConsoleKey.Enter)
-            {
-                if (keyUser.Key == ConsoleKey.Backspace && password.Length > 0)
-                {
-                    password = password.Remove(password.Length - 1);
-                    Console.Write("\b \b"); // borra asterisco
-                }
-                else if (char.IsLetterOrDigit(keyUser.KeyChar))
-                {
-                    password += keyUser.KeyChar;
-                    Console.Write("*");
-                }
-            }
-
-            Console.WriteLine("\n\n\n\t\t\t\t\t  [Ingresar] ");
-            Console.ReadKey(true);
-
-            //Console.ResetColor();
+            Console.WriteLine("\n\n\n\t\t\t\t\t   [Ingresar] ");
+            FuncionesConsola.Continuar();
 
             if(checkAccess(username, password))
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Console.WriteLine("\n\t\t\t\t  =-=-= Acceso correcto =-=-=");
+                Console.WriteLine("\n\t\t\t\t=-=-= Acceso correcto =-=-=");
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("\n\t\t\t\t    [Ir a Panel de Control]");
-                Console.ReadKey(true);
-                Console.ResetColor();
+                Console.WriteLine("\n\t\t\t\t  [Ir a Panel de Control]");
+                FuncionesConsola.Continuar();
             }
             else
             {
@@ -91,10 +76,29 @@ namespace ProyectoBiblioteca.Clases
                 Console.WriteLine("\n\t\t\t  =-=-= Usuario o contraseña incorrectos =-=-=");
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("\n\t\t\t\t\t  [Reintentar] ");
-                Console.ReadKey(true);
+                FuncionesConsola.Continuar();
                 Console.Clear();
                 menuAccess();
             }
+        }
+
+        public string convertPassword(string contra)
+        {
+            ConsoleKeyInfo keyUser;
+            while ((keyUser = Console.ReadKey(true)).Key != ConsoleKey.Enter)
+            {
+                if (keyUser.Key == ConsoleKey.Backspace && contra.Length > 0)
+                {
+                    contra = contra.Remove(contra.Length - 1);
+                    Console.Write("\b \b"); // borra asterisco
+                }
+                else if (char.IsLetterOrDigit(keyUser.KeyChar))
+                {
+                    contra += keyUser.KeyChar;
+                    Console.Write("*");
+                }
+            }
+            return contra;
         }
     }
 }
