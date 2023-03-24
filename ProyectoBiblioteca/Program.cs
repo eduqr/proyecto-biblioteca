@@ -1,4 +1,5 @@
-﻿using ProyectoBiblioteca.ClasesTemp;
+﻿using ProyectoBiblioteca.Clases;
+using ProyectoBiblioteca.ClasesTemp;
 using System;
 
 namespace ProyectoBiblioteca
@@ -8,7 +9,17 @@ namespace ProyectoBiblioteca
         static void Main(string[] args)
         {
             Menu menu = new Menu();
-            menu.MenuInicio();
+            SystemLogin systemLogin = new SystemLogin();
+            //menu.MenuInicio();
+            systemLogin.menuAccess();
+
+            // Proximo hacer menuAccess booleana
+            /*
+            if(systemLogin.menuAccess() )
+            {
+                menu.MenuInicio();
+            }
+            */
         }
     }
 }
