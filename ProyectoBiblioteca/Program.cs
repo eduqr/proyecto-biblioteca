@@ -10,17 +10,9 @@ namespace ProyectoBiblioteca
         {
             Menu menu = new Menu();
             SystemLogin systemLogin = new SystemLogin();
-            //menu.MenuInicio();
+            
             systemLogin.menuAccess();
             menu.MenuInicio();
-
-            // Proximo hacer menuAccess booleana
-            /*
-            if(systemLogin.menuAccess() )
-            {
-                menu.MenuInicio();
-            }
-            */
         }
     }
 }

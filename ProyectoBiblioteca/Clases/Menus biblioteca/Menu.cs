@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProyectoBiblioteca.Clases;
+using ProyectoBiblioteca.Clases.Funciones_Consola;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +16,8 @@ namespace ProyectoBiblioteca.ClasesTemp
             int opcionSeleccionada = 0;
             bool mostrarMenu = true;
             bool nuevaOpcionSeleccionada = true;
+
+            FuncionesConsola.EstablecerTituloConsola("Menú");
 
             while (mostrarMenu)
             {
@@ -31,9 +35,12 @@ namespace ProyectoBiblioteca.ClasesTemp
                     {
                         Console.ForegroundColor = i == opcionSeleccionada ? ConsoleColor.Black : ConsoleColor.Gray;
                         Console.BackgroundColor = i == opcionSeleccionada ? ConsoleColor.Gray : ConsoleColor.Black;
-                        Console.WriteLine(opciones[i]);
+                        string prefijo = i == opcionSeleccionada ? "> " : "";
+                        Console.WriteLine(prefijo + opciones[i]);
+                        
                         Console.ResetColor();
                     }
+                    DecoradorConsola.Dibujar(opcionSeleccionada);
                     nuevaOpcionSeleccionada = false;
                 }
 
@@ -62,16 +69,28 @@ namespace ProyectoBiblioteca.ClasesTemp
                         opcionSeleccionada++;
                         nuevaOpcionSeleccionada = true;
                     }
-
                 }
 
                 if (tecla.Key == ConsoleKey.Enter)
                 {
                     Console.WriteLine($"Seleccionaste la opción de {opciones[opcionSeleccionada]}.");
-                    if (opcionSeleccionada == opciones.Length - 1)
+
+                    switch (opcionSeleccionada)
                     {
-                        Console.WriteLine("Presiona cualquier tecla para salir.");
-                        Console.ReadKey();
+                        case 0:
+                            // FUNCIÓN PARA INGRESAR LIBRO
+                            break;
+                        case 1:
+                            // FUNCIÓN PARA MOSTRAR CATÁLOGO
+                            break;
+                        case 2:
+                            // CAMBIAR A FUNCION SALIR
+                            // CREARLA FuncionesConsola
+                            Console.WriteLine("Presiona cualquier tecla para salir.");
+                            Console.ReadKey();
+                            break;
+                        default:
+                            break;
                     }
                     mostrarMenu = false;
                 }
