@@ -1,5 +1,7 @@
 ﻿using ProyectoBiblioteca.Clases;
 using ProyectoBiblioteca.Clases.Funciones_Consola;
+using ProyectoBiblioteca.Clases.Menus_biblioteca;
+using ProyectoBiblioteca.CRUD;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +12,10 @@ namespace ProyectoBiblioteca.ClasesTemp
 {
     public class Menu
     {
+        CRUDLibros crud = new CRUDLibros();
         public void MenuInicio()
         {
-            string[] opciones = { "Editar registro de libros", "Ver catálogo de libros", "Salir" };
+            string[] opciones = { "Gestionar biblioteca", "Ver catálogo de libros", "Salir" };
             int opcionSeleccionada = 0;
             bool mostrarMenu = true;
             bool nuevaOpcionSeleccionada = true;
@@ -69,9 +72,12 @@ namespace ProyectoBiblioteca.ClasesTemp
                     {
                         case 0:
                             // FUNCIÓN LLAMAR MENU REGISTRO
+                            MenuRegistro menuRegistro = new MenuRegistro();
+                            menuRegistro.MenuSecundario();
                             break;
                         case 1:
                             // FUNCIÓN PARA MOSTRAR CATÁLOGO
+                            crud.MostrarInventario();
                             break;
                         case 2:
                             // CAMBIAR A FUNCION SALIR
