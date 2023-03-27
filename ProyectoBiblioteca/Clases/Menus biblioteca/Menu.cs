@@ -12,44 +12,34 @@ namespace ProyectoBiblioteca.ClasesTemp
     {
         public void MenuInicio()
         {
-            string[] opciones = { "Agregar libro", "Ver catálogo de libros", "Salir" };
+            string[] opciones = { "Editar registro de libros", "Ver catálogo de libros", "Salir" };
             int opcionSeleccionada = 0;
             bool mostrarMenu = true;
             bool nuevaOpcionSeleccionada = true;
 
             FuncionesConsola.EstablecerTituloConsola("Menú");
-
+            
             while (mostrarMenu)
             {
-                /* Explicación 1
-                    Muestra opciones del menú y resalta la seleccionada
-                    Si opción está seleccionada:
-                        Cambiar color de letra a negro
-                        Cambiar color de fondo a gris
-                */
+                
                 if (nuevaOpcionSeleccionada)
                 {
                     Console.Clear();
-                    Console.WriteLine("Menú:");
+                    DecoradorConsola.RecuadroMenu();
                     for (int i = 0; i < opciones.Length; i++)
                     {
                         Console.ForegroundColor = i == opcionSeleccionada ? ConsoleColor.Black : ConsoleColor.Gray;
-                        Console.BackgroundColor = i == opcionSeleccionada ? ConsoleColor.Gray : ConsoleColor.Black;
+                        Console.BackgroundColor = i == opcionSeleccionada ? ConsoleColor.Yellow : ConsoleColor.Black;
                         string prefijo = i == opcionSeleccionada ? "> " : "";
-                        Console.WriteLine(prefijo + opciones[i]);
-                        
+                        Console.Write("\t" + prefijo);
+                        Console.WriteLine(opciones[i]);
                         Console.ResetColor();
                     }
                     DecoradorConsola.Dibujar(opcionSeleccionada);
                     nuevaOpcionSeleccionada = false;
                 }
 
-                /* Explicación 2
-                    Función que lee la próxima tecla presionada por el usuario en 
-                    la consola y devuelve un objeto ConsoleKeyInfo. El parámetro true 
-                    que se pasa a la función indica que la tecla presionada no debe 
-                    mostrarse en la consola. 
-                */
+                
                 ConsoleKeyInfo tecla = Console.ReadKey(true);
 
                 if (tecla.Key == ConsoleKey.UpArrow)
@@ -78,7 +68,7 @@ namespace ProyectoBiblioteca.ClasesTemp
                     switch (opcionSeleccionada)
                     {
                         case 0:
-                            // FUNCIÓN PARA INGRESAR LIBRO
+                            // FUNCIÓN LLAMAR MENU REGISTRO
                             break;
                         case 1:
                             // FUNCIÓN PARA MOSTRAR CATÁLOGO

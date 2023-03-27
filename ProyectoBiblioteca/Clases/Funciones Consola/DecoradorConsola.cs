@@ -77,6 +77,17 @@ namespace ProyectoBiblioteca.Clases.Funciones_Consola
             Console.ResetColor();
         }
 
+        public static void RecuadroMenu()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine();
+            Console.WriteLine("\t\t\t\t" + "+--------------+");
+            Console.WriteLine("\t\t\t\t" + "|     Menú     |");
+            Console.WriteLine("\t\t\t\t" + "+--------------+");
+            Console.WriteLine();
+            Console.ResetColor();
+        }
+
         public static void TextoAnimado(int velocidad, string texto)
         {
             for (int i = 0; i < texto.Length; i++)
@@ -97,51 +108,57 @@ namespace ProyectoBiblioteca.Clases.Funciones_Consola
             switch (num)
             {
                 case 0:
+                    Console.ForegroundColor = ConsoleColor.Green;
                     string dibujoASCII = @"
-                                     _.-""\
-                                 _.-""     \
-                              ,-""          \
-                             ( \            \
-                              \ \            \
-                               \ \            \
-                                \ \         _.-;
-                                 \ \    _.-""   :
-                                  \ \,-""    _.-""
-                                   \(   _.-"" 
-                                   `--""";
+                                         _.-""\
+                                     _.-""     \
+                                  ,-""          \
+                                 ( \            \
+                                  \ \            \
+                                   \ \            \
+                                    \ \         _.-;
+                                     \ \    _.-""   :
+                                      \ \,-""    _.-""
+                                       \(   _.-"" 
+                                       `--""";
                     Console.WriteLine(dibujoASCII);
+                    Console.ResetColor();
                     break;
                 case 1:
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                     dibujoASCII = @"
-                           .--.                   .---.
-                       .---|__|           .-.     |~~~|
-                    .--|===|--|_          |_|     |~~~|--.
-                    |  |===|  |'\     .---!~|  .--|   |--|
-                    |%%|   |  |.'\    |===| |--|%%|   |  |
-                    |%%|   |  |\.'\   |   | |__|  |   |  |
-                    |  |   |  | \  \  |===| |==|  |   |  |
-                    |  |   |__|  \.'\ |   |_|__|  |~~~|__|
-                    |  |===|--|   \.'\|===|~|--|%%|~~~|--|
-                    ^--^---'--^    `-'`---^-^--^--^---'--'";
+                               .--.                   .---.
+                           .---|__|           .-.     |~~~|
+                        .--|===|--|_          |_|     |~~~|--.
+                        |  |===|  |'\     .---!~|  .--|   |--|
+                        |%%|   |  |.'\    |===| |--|%%|   |  |
+                        |%%|   |  |\.'\   |   | |__|  |   |  |
+                        |  |   |  | \  \  |===| |==|  |   |  |
+                        |  |   |__|  \.'\ |   |_|__|  |~~~|__|
+                        |  |===|--|   \.'\|===|~|--|%%|~~~|--|
+                        ^--^---'--^    `-'`---^-^--^--^---'--'";
                     Console.WriteLine(dibujoASCII);
+                    Console.ResetColor();
                     break;
                 case 2:
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
                     dibujoASCII = @"
-                                               .oMc
-                                            .MMMMMP
-                                          .MM888MM
-                    ....                .MM88888MP
-                    MMMMMMMMb.         d8MM8tt8MM
-                     MM88888MMMMc `:' dMME8ttt8MM
-                      MM88tt888EMMc:dMM8E88tt88MP
-                       MM8ttt888EEM8MMEEE8E888MC
-                       `MM888t8EEEM8MMEEE8t8888Mb
-                        ""MM88888tEM8""MME88ttt88MM
-                         dM88ttt8EM8""MMM888ttt8MM
-                         MM8ttt88MM"" "" ""MMNICKMM""
-                         3M88888MM""      ""MMMP""
-                          ""MNICKM""";
+                                                   .oMc
+                                                .MMMMMP
+                                              .MM888MM
+                        ....                .MM88888MP
+                        MMMMMMMMb.         d8MM8tt8MM
+                         MM88888MMMMc `:' dMME8ttt8MM
+                          MM88tt888EMMc:dMM8E88tt88MP
+                           MM8ttt888EEM8MMEEE8E888MC
+                           `MM888t8EEEM8MMEEE8t8888Mb
+                            ""MM88888tEM8""MME88ttt88MM
+                             dM88ttt8EM8""MMM888ttt8MM
+                             MM8ttt88MM"" "" ""MMNICKMM""
+                             3M88888MM""      ""MMMP""
+                              ""MNICKM""";
                     Console.WriteLine(dibujoASCII);
+                    Console.ResetColor();
                     break;
                 default:
                     break;
