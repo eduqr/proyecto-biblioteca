@@ -10,8 +10,7 @@ namespace ProyectoBiblioteca.Clases.Menus_biblioteca
 {
     public class MenuRegistro
     {
-        // MOSTRAR MENU SECUNDARIO
-        // AQUI SE LLAMARÁN A LAS FUNCIONES DEL CRUD
+
         CRUDLibros crud = new CRUDLibros();
         public void MenuSecundario()
         {
@@ -71,16 +70,20 @@ namespace ProyectoBiblioteca.Clases.Menus_biblioteca
                     switch (opcionSeleccionada)
                     {
                         case 0:
-                            // FUNCIÓN LLAMAR REGISTRO DE LIBRO
                             crud.RegistrarLibro();
                             break;
                         case 1:
                             // FUNCIÓN PARA EDITAR REGISTRO
+                            Console.WriteLine("\nIngrese el título del libro a editar: ");
+                            string titulo = Console.ReadLine();
+                            crud.EditarLibro(titulo);
                             
                             break;
                         case 2:
                             // FUNCIÓN PARA ELIMINAR REGISTRO
-
+                            Console.WriteLine("\nIngrese el título del libro a eliminar");
+                            titulo = Console.ReadLine();
+                            crud.EliminarRegistroLibro(titulo);
                             break;
                         default:
                             break;
