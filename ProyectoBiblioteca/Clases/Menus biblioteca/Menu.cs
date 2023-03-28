@@ -6,13 +6,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
-namespace ProyectoBiblioteca.ClasesTemp
+namespace ProyectoBiblioteca.Menus_biblioteca
 {
     public class Menu
     {
         CRUDLibros crud = new CRUDLibros();
+        MenuRegistro menuRegistro = new MenuRegistro();
         public void MenuInicio()
         {
             string[] opciones = { "Gestionar biblioteca", "Ver catálogo de libros", "Salir" };
@@ -66,24 +68,23 @@ namespace ProyectoBiblioteca.ClasesTemp
 
                 if (tecla.Key == ConsoleKey.Enter)
                 {
-                    Console.WriteLine($"Seleccionaste la opción de {opciones[opcionSeleccionada]}.");
-
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine($"\n\n\tSeleccionado: {opciones[opcionSeleccionada]}.");
+                    Console.ResetColor();
                     switch (opcionSeleccionada)
                     {
                         case 0:
-                            // FUNCIÓN LLAMAR MENU REGISTRO
-                            MenuRegistro menuRegistro = new MenuRegistro();
+                            DecoradorConsola.PantallaCarga();
                             menuRegistro.MenuSecundario();
                             break;
                         case 1:
-                            // FUNCIÓN PARA MOSTRAR CATÁLOGO
+                            DecoradorConsola.PantallaCarga();
                             crud.MostrarInventario();
+                            FuncionesConsola.Continuar();
+                            MenuInicio();
                             break;
                         case 2:
-                            // CAMBIAR A FUNCION SALIR
-                            // CREARLA FuncionesConsola
-                            Console.WriteLine("Presiona cualquier tecla para salir.");
-                            Console.ReadKey();
+                            FuncionesConsola.Salir();
                             break;
                         default:
                             break;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -88,6 +89,18 @@ namespace ProyectoBiblioteca.Clases.Funciones_Consola
             Console.ResetColor();
         }
 
+        public static void RecuadroInventario(int cantidad)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine();
+            Console.WriteLine("\t\t\t\t\t" + "+----------------------------+");
+            Console.WriteLine("\t\t\t\t\t" + "|  INVENTARIO BIBLIOTECARIO  |");
+            Console.WriteLine("\t\t\t\t\t" + "+----------------------------+");
+            Console.WriteLine("\t\t\t\t\t" + $"     {cantidad} Libros registrados");
+            Console.WriteLine();
+            Console.ResetColor();
+        }
+
         public static void TextoAnimado(int velocidad, string texto)
         {
             for (int i = 0; i < texto.Length; i++)
@@ -95,6 +108,26 @@ namespace ProyectoBiblioteca.Clases.Funciones_Consola
                 Console.Write(texto[i]);
                 Thread.Sleep(velocidad);
             }
+        }
+
+        public static void PantallaCarga()
+        {
+            Console.WriteLine();
+            TextoAnimado(60, ("\t\t\t\tCargando..."));
+            string[] secuencia = new string[] { "/", "─", "\\", "|" };
+            int index = 0;
+            int time = 15;
+            while (time > 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.Write($"\r\t\t\t\t\t\t[{secuencia[index]}]");
+                Thread.Sleep(70);
+                index++;
+                if (index == secuencia.Length) { index = 0; }
+                time--;
+            }
+            Console.ResetColor();
+            Console.Clear();
         }
 
         // NO TOCAR ESTA FUNCIÓN DE ABAJO

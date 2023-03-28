@@ -9,7 +9,7 @@ using ProyectoBiblioteca.Context;
 namespace ProyectoBiblioteca.Migrations
 {
     [DbContext(typeof(ConexionBD))]
-    [Migration("20230327150318_Example")]
+    [Migration("20230327220546_Example")]
     partial class Example
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

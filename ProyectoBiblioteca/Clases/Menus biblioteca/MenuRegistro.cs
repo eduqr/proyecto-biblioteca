@@ -1,20 +1,24 @@
 ﻿using ProyectoBiblioteca.Clases.Funciones_Consola;
+using ProyectoBiblioteca.Clases.Menus_biblioteca;
+using ProyectoBiblioteca.Clases;
 using ProyectoBiblioteca.CRUD;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProyectoBiblioteca.Menus_biblioteca;
+//using ProyectoBiblioteca.ClasesTemp;
 
 namespace ProyectoBiblioteca.Clases.Menus_biblioteca
 {
     public class MenuRegistro
     {
-
         CRUDLibros crud = new CRUDLibros();
+        
         public void MenuSecundario()
         {
-            string[] opciones = { "Registrar libro", "Editar registro de libro", "Eliminar registro de libro" };
+            string[] opciones = { "Registrar libro", "Editar registro de libro", "Eliminar registro de libro", "Regresar" };
             int opcionSeleccionada = 0;
             bool mostrarMenu = true;
             bool nuevaOpcionSeleccionada = true;
@@ -65,25 +69,33 @@ namespace ProyectoBiblioteca.Clases.Menus_biblioteca
 
                 if (tecla.Key == ConsoleKey.Enter)
                 {
-                    Console.WriteLine($"Seleccionaste la opción de {opciones[opcionSeleccionada]}.");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine($"\n\n\tSeleccionado: {opciones[opcionSeleccionada]}.");
+                    Console.ResetColor();
 
                     switch (opcionSeleccionada)
                     {
                         case 0:
+                            DecoradorConsola.PantallaCarga();
                             crud.RegistrarLibro();
+                            FuncionesConsola.Continuar();
+                            MenuSecundario();
                             break;
                         case 1:
-                            // FUNCIÓN PARA EDITAR REGISTRO
-                            Console.WriteLine("\nIngrese el título del libro a editar: ");
-                            string titulo = Console.ReadLine();
-                            crud.EditarLibro(titulo);
-                            
+                            DecoradorConsola.PantallaCarga();
+                            crud.EditarLibro();
+                            FuncionesConsola.Continuar();
+                            MenuSecundario();
                             break;
                         case 2:
-                            // FUNCIÓN PARA ELIMINAR REGISTRO
-                            Console.WriteLine("\nIngrese el título del libro a eliminar");
-                            titulo = Console.ReadLine();
-                            crud.EliminarRegistroLibro(titulo);
+                            DecoradorConsola.PantallaCarga();
+                            crud.EliminarRegistroLibro();
+                            FuncionesConsola.Continuar();
+                            MenuSecundario();
+                            break;
+                        case 3:
+                            Menu menu = new Menu();
+                            menu.MenuInicio();
                             break;
                         default:
                             break;

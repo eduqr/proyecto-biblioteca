@@ -18,37 +18,85 @@ namespace ProyectoBiblioteca.CRUD
             using (var _context = new ConexionBD())
             {
                 Libros libro = new Libros();
-                Console.Clear();
-                Console.WriteLine("Ingrese el título del libro:");
-                Console.Write("> ");
-                libro.Titulo = Console.ReadLine();
-                Console.WriteLine("\nIngrese el ISBN del libro:");
-                Console.Write("> ");
-                libro.ISBN = Console.ReadLine();
-                Console.WriteLine("\nIngrese el autor del libro:");
-                Console.Write("> ");
-                libro.Autor = Console.ReadLine();
-                Console.WriteLine("\nIngrese la editorial del libro:");
-                Console.Write("> ");
-                libro.Editorial = Console.ReadLine();
-                Console.WriteLine("\nIngrese las unidades en existencia del libro");
-                Console.Write("> ");
+                string valorIngresado;
+
+                FuncionesConsola.EstablecerTituloConsola($"Agregando libro");
+
+                Console.WriteLine("\n\t" + "Ingrese el título del libro:");
+                Console.Write("\t> ");
+
+                while (string.IsNullOrEmpty(valorIngresado = Console.ReadLine()))
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine($"\n\tEl valor de 'Título' no puede estar vacío.");
+                    Console.ResetColor();
+                    Console.Write("\t> ");
+                }
+
+                libro.Titulo = valorIngresado;
+
+                Console.WriteLine("\n\t" + "Ingrese el ISBN del libro:");
+                Console.Write("\t> ");
+
+                while (string.IsNullOrEmpty(valorIngresado = Console.ReadLine()))
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine($"\n\tEl valor de 'ISBN' no puede estar vacío.");
+                    Console.ResetColor();
+                    Console.Write("\t> ");
+                }
+
+                libro.ISBN = valorIngresado;
+
+                Console.WriteLine("\n\t" + "Ingrese el autor del libro:");
+                Console.Write("\t> ");
+
+                while (string.IsNullOrEmpty(valorIngresado = Console.ReadLine()))
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine($"\n\tEl valor de 'Autor' no puede estar vacío.");
+                    Console.ResetColor();
+                    Console.Write("\t> ");
+                }
+
+                libro.Autor = valorIngresado;
+
+                Console.WriteLine("\n\t" + "Ingrese la editorial del libro:");
+                Console.Write("\t> ");
+
+                while (string.IsNullOrEmpty(valorIngresado = Console.ReadLine()))
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine($"\n\tEl valor de 'Editorial' no puede estar vacío.");
+                    Console.ResetColor();
+                    Console.Write("\t> ");
+                }
+
+                libro.Editorial = valorIngresado;
+
+                Console.WriteLine("\n\t" + "Ingrese las unidades en existencia del libro");
                 while (true)
                 {
-                    try
+                    Console.Write("\t> ");
+                    if (int.TryParse(Console.ReadLine(), out int unidades))
                     {
-                        libro.Unidades = int.Parse(Console.ReadLine());
+                        libro.Unidades = unidades;
                         break;
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        Console.WriteLine("\nSolo se admiten numeros enteros, ya que son unidades en existencia");
-                        Console.Write("> ");
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine("\n\tSolo se admiten numeros enteros, ya que son unidades en existencia");
+                        Console.ResetColor();
                     }
                 }
+
                 _context.Libros.Add(libro);
                 _context.SaveChanges();
-                Console.WriteLine("\nLibro guardado!");
+                
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("\n\tLIBRO AGREGADO AL REGISTRO");
+                Console.ResetColor();
             }
         }
 
@@ -56,90 +104,157 @@ namespace ProyectoBiblioteca.CRUD
         {
             using (var _context = new ConexionBD())
             {
+                var cantidadLibros = _context.Libros.Count();
+                if (cantidadLibros == 0)
+                {
+                    Console.WriteLine("\n\tNo hay libros registrados aún.");
+                    Console.WriteLine("\n\tAgregue libros al registro para poder visualizarlos aquí.");
+                    return;
+                }
+
                 var libros = _context.Libros.ToList();
-                Console.Clear();
-                Console.WriteLine("\t\t\t\t\t" + "Inventario de libros:");
-                Console.WriteLine();
-                Console.WriteLine("---------------------------------");
+
+                DecoradorConsola.RecuadroInventario(cantidadLibros);
+                Console.WriteLine("\t---------------------------------");
                 foreach (var libro in libros)
                 {
-                    Console.WriteLine($"ID: \t\t{libro.Id}");
-                    Console.WriteLine($"Título: \t{libro.Titulo}");
-                    Console.WriteLine($"ISBN: \t\t{libro.ISBN}");
-                    Console.WriteLine($"Autor: \t\t{libro.Autor}");
-                    Console.WriteLine($"Editorial: \t{libro.Editorial}");
-                    Console.WriteLine($"Unidades: \t{libro.Unidades}");
-                    Console.WriteLine("---------------------------------");
-                    
+                    Console.WriteLine($"\tID: \t\t{libro.Id}");
+                    Console.WriteLine($"\tTítulo: \t{libro.Titulo}");
+                    Console.WriteLine($"\tISBN: \t\t{libro.ISBN}");
+                    Console.WriteLine($"\tAutor: \t\t{libro.Autor}");
+                    Console.WriteLine($"\tEditorial: \t{libro.Editorial}");
+                    Console.WriteLine($"\tUnidades: \t{libro.Unidades}");
+                    Console.WriteLine("\t---------------------------------");
                 }
             }
         }
 
-        public void EditarLibro(string titulo)
+        public void EditarLibro()
         {
             using (var _context = new ConexionBD())
             {
-                Console.Clear();
+                string titulo;
+                Console.WriteLine("\n\tIngrese el título del libro a editar: ");
+                Console.Write("\t> ");
+                while (string.IsNullOrEmpty(titulo = Console.ReadLine()))
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine($"\n\tEl valor de 'Título' no puede estar vacío.");
+                    Console.ResetColor();
+                    Console.Write("\t> ");
+                }
+
                 Libros libro = _context.Libros.FirstOrDefault(c => c.Titulo == titulo);
-                FuncionesConsola.EstablecerTituloConsola($"Editando a {titulo}");
+                FuncionesConsola.EstablecerTituloConsola($"Editando registro de {titulo}");
+                
                 if (libro != null)
                 {
-                    Console.WriteLine("Ingrese el título del libro:");
-                    Console.Write("> ");
-                    libro.Titulo = Console.ReadLine();
-                    Console.WriteLine("\nIngrese el ISBN del libro:");
-                    Console.Write("> ");
-                    libro.ISBN = Console.ReadLine();
-                    Console.WriteLine("\nIngrese el autor del libro:");
-                    Console.Write("> ");
-                    libro.Autor = Console.ReadLine();
-                    Console.WriteLine("\nIngrese la editorial del libro:");
-                    Console.Write("> ");
-                    libro.Editorial = Console.ReadLine();
-                    Console.WriteLine("\nIngrese las unidades en existencia del libro");
-                    Console.Write("> ");
+                    string valorIngresado;
+
+                    Console.WriteLine("\n\t" + "Ingrese el título del libro:");
+                    Console.Write("\t> ");
+
+                    while (string.IsNullOrEmpty(valorIngresado = Console.ReadLine()))
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine($"\n\tEl valor de 'Título' no puede estar vacío.");
+                        Console.ResetColor();
+                        Console.Write("\t> ");
+                    }
+
+                    libro.Titulo = valorIngresado;
+
+                    Console.WriteLine("\n\t" + "Ingrese el ISBN del libro:");
+                    Console.Write("\t> ");
+
+                    while (string.IsNullOrEmpty(valorIngresado = Console.ReadLine()))
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine($"\n\tEl valor de 'ISBN' no puede estar vacío.");
+                        Console.ResetColor();
+                        Console.Write("\t> ");
+                    }
+
+                    libro.ISBN = valorIngresado;
+
+                    Console.WriteLine("\n\t" + "Ingrese el autor del libro:");
+                    Console.Write("\t> ");
+
+                    while (string.IsNullOrEmpty(valorIngresado = Console.ReadLine()))
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
+                        Console.WriteLine($"\n\tEl valor de 'Autor' no puede estar vacío.");
+                        Console.ResetColor();
+                        Console.Write("\t> ");
+                    }
+
+                    libro.Autor = valorIngresado;
+
+                    Console.WriteLine("\n\tIngrese las unidades en existencia del libro:");
                     while (true)
                     {
-                        try
+                        Console.Write("\t> ");
+                        if (int.TryParse(Console.ReadLine(), out int unidades))
                         {
-                            libro.Unidades = int.Parse(Console.ReadLine());
+                            libro.Unidades = unidades;
                             break;
                         }
-                        catch (Exception ex)
+                        else
                         {
-                            Console.WriteLine("\nSolo se admiten numeros enteros, ya que son unidades en existencia");
-                            Console.Write("> ");
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            Console.WriteLine("\n\tSolo se admiten numeros enteros, ya que son unidades en existencia");
+                            Console.ResetColor();
                         }
                     }
+
                     _context.Libros.Update(libro);
                     _context.SaveChanges();
                     Console.WriteLine();
-                    Console.WriteLine("\nLIBRO EDITADO CON ÉXITO");
+                    
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("\n\tLIBRO EDITADO CORRECTAMENTE");
+                    Console.ResetColor();  
                 }
                 else
                 {
-                    Console.WriteLine("El libro no existe.");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\n\tEL LIBRO NO EXISTE EN EL REGISTRO");
+                    Console.ResetColor();
                 }
             }
         }
 
-        public void EliminarRegistroLibro(string titulo)
+        public void EliminarRegistroLibro()
         {
             using (var _context = new ConexionBD())
             {
-                Console.Clear();
+                string titulo;
+                Console.WriteLine("\n\tIngrese el título del libro a eliminar: ");
+                Console.Write("\t> ");                
+                while (string.IsNullOrEmpty(titulo = Console.ReadLine()))
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine($"\n\tEl valor de 'Título' no puede estar vacío.");
+                    Console.ResetColor();
+                    Console.Write("\t> ");
+                }
+
                 Libros libro = _context.Libros.FirstOrDefault(c => c.Titulo == titulo);
                 FuncionesConsola.EstablecerTituloConsola($"Eliminando a {titulo}");
                 if (libro != null)
                 {
                     _context.Libros.Remove(libro);
                     _context.SaveChanges();
-                    Console.WriteLine();
-                    Console.WriteLine("\nLIBRO ELIMINADO CON ÉXITO");
+
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\n\tLIBRO ELIMINADO");
+                    Console.ResetColor();
                 }
                 else
                 {
-                    Console.WriteLine("El libro no existe.");
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\n\tEL LIBRO NO EXISTE EN EL REGISTRO");
+                    Console.ResetColor();
                 }
             }
         }
