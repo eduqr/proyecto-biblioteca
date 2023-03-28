@@ -78,7 +78,7 @@ namespace ProyectoBiblioteca.CRUD
                 while (true)
                 {
                     Console.Write("\t> ");
-                    if (int.TryParse(Console.ReadLine(), out int unidades))
+                    if (int.TryParse(Console.ReadLine(), out int unidades) && unidades > 0)
                     {
                         libro.Unidades = unidades;
                         break;
@@ -97,6 +97,7 @@ namespace ProyectoBiblioteca.CRUD
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("\n\tLIBRO AGREGADO AL REGISTRO");
                 Console.ResetColor();
+                //DecoradorConsola.OpcionRegresarMenu();
             }
         }
 
@@ -107,8 +108,10 @@ namespace ProyectoBiblioteca.CRUD
                 var cantidadLibros = _context.Libros.Count();
                 if (cantidadLibros == 0)
                 {
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("\n\tNo hay libros registrados aún.");
                     Console.WriteLine("\n\tAgregue libros al registro para poder visualizarlos aquí.");
+                    Console.ResetColor();
                     return;
                 }
 
@@ -126,6 +129,7 @@ namespace ProyectoBiblioteca.CRUD
                     Console.WriteLine($"\tUnidades: \t{libro.Unidades}");
                     Console.WriteLine("\t---------------------------------");
                 }
+                //DecoradorConsola.OpcionRegresarMenu();
             }
         }
 
@@ -133,6 +137,17 @@ namespace ProyectoBiblioteca.CRUD
         {
             using (var _context = new ConexionBD())
             {
+
+                var cantidadLibros = _context.Libros.Count();
+                if (cantidadLibros == 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("\n\tNo hay libros registrados aún.");
+                    Console.WriteLine("\n\tAgregue libros al registro para poder editarlos aquí si es necesario.");
+                    Console.ResetColor();
+                    return;
+                }
+
                 string titulo;
                 Console.WriteLine("\n\tIngrese el título del libro a editar: ");
                 Console.Write("\t> ");
@@ -194,7 +209,7 @@ namespace ProyectoBiblioteca.CRUD
                     while (true)
                     {
                         Console.Write("\t> ");
-                        if (int.TryParse(Console.ReadLine(), out int unidades))
+                        if (int.TryParse(Console.ReadLine(), out int unidades) && unidades > 0)
                         {
                             libro.Unidades = unidades;
                             break;
@@ -213,13 +228,15 @@ namespace ProyectoBiblioteca.CRUD
                     
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("\n\tLIBRO EDITADO CORRECTAMENTE");
-                    Console.ResetColor();  
+                    Console.ResetColor();
+                    //DecoradorConsola.OpcionRegresarMenu();
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\n\tEL LIBRO NO EXISTE EN EL REGISTRO");
                     Console.ResetColor();
+                    //DecoradorConsola.OpcionRegresarMenu();
                 }
             }
         }
@@ -228,6 +245,16 @@ namespace ProyectoBiblioteca.CRUD
         {
             using (var _context = new ConexionBD())
             {
+                var cantidadLibros = _context.Libros.Count();
+                if (cantidadLibros == 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    Console.WriteLine("\n\tNo hay libros registrados aún.");
+                    Console.WriteLine("\n\tAgregue libros al registro para poder eliminarlos si es necesario.");
+                    Console.ResetColor();
+                    return;
+                }
+
                 string titulo;
                 Console.WriteLine("\n\tIngrese el título del libro a eliminar: ");
                 Console.Write("\t> ");                
@@ -249,12 +276,14 @@ namespace ProyectoBiblioteca.CRUD
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\n\tLIBRO ELIMINADO");
                     Console.ResetColor();
+                    //DecoradorConsola.OpcionRegresarMenu();
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("\n\tEL LIBRO NO EXISTE EN EL REGISTRO");
                     Console.ResetColor();
+                    //DecoradorConsola.OpcionRegresarMenu();
                 }
             }
         }

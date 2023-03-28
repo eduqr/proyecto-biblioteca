@@ -54,27 +54,40 @@ namespace ProyectoBiblioteca.Clases.Funciones_Consola
             Console.ResetColor();
         }
 
-        public static void MensajeAceptado()
+        public static void OpcionRegresarMenu()
         {
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.WriteLine();
-            Console.WriteLine("\t\t\t\t" + "=-=-=-= Acceso correcto =-=-=-=");
-            
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine();
-            Console.WriteLine("\t\t\t\t" + "    [Ir a Panel de Control]");
+            Console.WriteLine("\t" + "[Ir al Menú]");
             Console.ResetColor();
+        }
+
+        public static void MensajeAceptado()
+        {
+            FuncionesConsola.EstablecerTituloConsola("Verificación exitosa");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine();
+            Console.WriteLine("\t" + "Acceso verificado.");
+            Console.WriteLine("\t" + "Bienvenido de vuelta.");
+
+            OpcionRegresarMenu();
+            //Console.ForegroundColor = ConsoleColor.Yellow;
+            //Console.WriteLine();
+            //Console.WriteLine("\t" + "[Ir al Menú]");
+            //Console.ResetColor();
         }
 
         public static void MensajeRechazado()
         {
+            FuncionesConsola.EstablecerTituloConsola("Acceso no autorizado");
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine();
-            Console.WriteLine("\t\t\t" + "  =-=-= Usuario o contraseña incorrectos =-=-=");
+            Console.WriteLine("\t" + "Usuario o contraseña incorrectos.");
+            Console.WriteLine("\t" + "Verifique sus credenciales.");
             
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine();
-            Console.WriteLine("\t\t\t\t\t" + "  [Reintentar]");
+            Console.WriteLine("\t" + "[Reintentar]");
             Console.ResetColor();
         }
 

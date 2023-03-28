@@ -80,6 +80,7 @@ namespace ProyectoBiblioteca.Menus_biblioteca
                         case 1:
                             DecoradorConsola.PantallaCarga();
                             crud.MostrarInventario();
+                            DecoradorConsola.OpcionRegresarMenu();
                             FuncionesConsola.Continuar();
                             MenuInicio();
                             break;

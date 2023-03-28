@@ -11,8 +11,8 @@ namespace ProyectoBiblioteca.Clases
         public static void Continuar()
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine();
-            Console.WriteLine("\t\t" + "Presione 'Enter' para continuar");
+            
+            Console.WriteLine("\t" + "Presione 'Enter' para continuar");
             Console.ReadKey(true);
             Console.ResetColor();
             Console.Clear();

@@ -78,18 +78,21 @@ namespace ProyectoBiblioteca.Clases.Menus_biblioteca
                         case 0:
                             DecoradorConsola.PantallaCarga();
                             crud.RegistrarLibro();
+                            DecoradorConsola.OpcionRegresarMenu();
                             FuncionesConsola.Continuar();
                             MenuSecundario();
                             break;
                         case 1:
                             DecoradorConsola.PantallaCarga();
                             crud.EditarLibro();
+                            DecoradorConsola.OpcionRegresarMenu();
                             FuncionesConsola.Continuar();
                             MenuSecundario();
                             break;
                         case 2:
                             DecoradorConsola.PantallaCarga();
                             crud.EliminarRegistroLibro();
+                            DecoradorConsola.OpcionRegresarMenu();
                             FuncionesConsola.Continuar();
                             MenuSecundario();
                             break;
