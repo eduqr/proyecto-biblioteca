@@ -113,6 +113,18 @@ namespace ProyectoBiblioteca.Clases.Funciones_Consola
             Console.WriteLine();
             Console.ResetColor();
         }
+        
+        public static void RecuadroPrestamos(int cantidad)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine();
+            Console.WriteLine("\t\t\t\t\t" + "+----------------------------+");
+            Console.WriteLine("\t\t\t\t\t" + "|    PRÉSTAMOS BIBLIOTECA    |");
+            Console.WriteLine("\t\t\t\t\t" + "+----------------------------+");
+            Console.WriteLine("\t\t\t\t\t" + $"   {cantidad} préstamos registrados");
+            Console.WriteLine();
+            Console.ResetColor();
+        }
 
         public static void TextoAnimado(int velocidad, string texto)
         {
@@ -187,6 +199,8 @@ namespace ProyectoBiblioteca.Clases.Funciones_Consola
                     Console.ResetColor();
                     break;
                 case 2:
+                    break;
+                case 3:
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     dibujoASCII = @"
                                                    .oMc

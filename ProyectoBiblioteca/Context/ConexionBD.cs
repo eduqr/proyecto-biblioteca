@@ -16,7 +16,11 @@ namespace ProyectoBiblioteca.Context
         }
 
         public DbSet<Libros> Libros { get; set; }
+<<<<<<< HEAD
 
         public DbSet<Administrador> Administrador { get; set;} 
+=======
+        public DbSet<Prestamo> Prestamo { get; set; }
+>>>>>>> 5b94b5ce0101635335b658ad2025b405c012a8b6
     }
 }
