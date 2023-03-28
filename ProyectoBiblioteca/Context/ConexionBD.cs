@@ -12,15 +12,15 @@ namespace ProyectoBiblioteca.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=LAPTOP-HM7A63KQ;Database=BibliotecaBD;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-8SQGGRC\MSSQLSERVER03;Database=Biblioteca22BMBD;Trusted_Connection=True;");
         }
 
         public DbSet<Libros> Libros { get; set; }
-<<<<<<< HEAD
+
 
         public DbSet<Administrador> Administrador { get; set;} 
-=======
+
         public DbSet<Prestamo> Prestamo { get; set; }
->>>>>>> 5b94b5ce0101635335b658ad2025b405c012a8b6
+
     }
 }

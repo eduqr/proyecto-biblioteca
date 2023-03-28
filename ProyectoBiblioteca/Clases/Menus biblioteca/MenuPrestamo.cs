@@ -1,33 +1,29 @@
-﻿using ProyectoBiblioteca.Clases;
-using ProyectoBiblioteca.Clases.Funciones_Consola;
-using ProyectoBiblioteca.Clases.Menus_biblioteca;
+﻿using ProyectoBiblioteca.Clases.Funciones_Consola;
 using ProyectoBiblioteca.CRUD;
+using ProyectoBiblioteca.Menus_biblioteca;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
-namespace ProyectoBiblioteca.Menus_biblioteca
+namespace ProyectoBiblioteca.Clases.Menus_biblioteca
 {
-    public class Menu
+    public class MenuPrestamo
     {
-        CRUDLibros crud = new CRUDLibros();
-        MenuRegistro menuRegistro = new MenuRegistro();
-        MenuPrestamo menuPrestamo = new MenuPrestamo();
-        public void MenuInicio()
+        CRUDPrestamos crudprestamos = new CRUDPrestamos();
+        public void MenuPrestamos()
         {
-            string[] opciones = { "Gestionar biblioteca", "Ver catálogo de libros", "Gestionar préstamo", "Salir" };
+            string[] opciones = { "Registrar prestamo", "Editar prestamos", "Eliminar prestamos", "Mostrar prestamos", "Regresar" };
             int opcionSeleccionada = 0;
             bool mostrarMenu = true;
             bool nuevaOpcionSeleccionada = true;
 
-            FuncionesConsola.EstablecerTituloConsola("Menú");
-            
+            FuncionesConsola.EstablecerTituloConsola("Gestión de Prestamos");
+
             while (mostrarMenu)
             {
-                
+
                 if (nuevaOpcionSeleccionada)
                 {
                     Console.Clear();
@@ -41,11 +37,11 @@ namespace ProyectoBiblioteca.Menus_biblioteca
                         Console.WriteLine(opciones[i]);
                         Console.ResetColor();
                     }
-                    DecoradorConsola.Dibujar(opcionSeleccionada);
+                    //DecoradorConsola.Dibujar(opcionSeleccionada);
                     nuevaOpcionSeleccionada = false;
                 }
 
-                
+
                 ConsoleKeyInfo tecla = Console.ReadKey(true);
 
                 if (tecla.Key == ConsoleKey.UpArrow)
@@ -72,26 +68,40 @@ namespace ProyectoBiblioteca.Menus_biblioteca
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine($"\n\n\tSeleccionado: {opciones[opcionSeleccionada]}.");
                     Console.ResetColor();
+
                     switch (opcionSeleccionada)
                     {
                         case 0:
                             DecoradorConsola.PantallaCarga();
-                            menuRegistro.MenuSecundario();
+                            crudprestamos.RegistrarPrestamo();
+                            DecoradorConsola.OpcionRegresarMenu();
+                            FuncionesConsola.Continuar();
+                            MenuPrestamos();
                             break;
                         case 1:
                             DecoradorConsola.PantallaCarga();
-                            crud.MostrarInventario();
+                            crudprestamos.EditarPrestamo();
                             DecoradorConsola.OpcionRegresarMenu();
                             FuncionesConsola.Continuar();
-                            MenuInicio();
+                            MenuPrestamos();
                             break;
                         case 2:
                             DecoradorConsola.PantallaCarga();
-                            menuPrestamo.MenuPrestamos();
-
+                            crudprestamos.EliminarPrestamo();
+                            DecoradorConsola.OpcionRegresarMenu();
+                            FuncionesConsola.Continuar();
+                            MenuPrestamos();
                             break;
                         case 3:
-                            FuncionesConsola.Salir();
+                            DecoradorConsola.PantallaCarga();
+                            crudprestamos.MostrarPrestamos();
+                            DecoradorConsola.OpcionRegresarMenu();
+                            FuncionesConsola.Continuar();
+                            MenuPrestamos();
+                            break;
+                        case 4:
+                            Menu menu = new Menu();
+                            menu.MenuInicio();
                             break;
                         default:
                             break;
@@ -99,6 +109,7 @@ namespace ProyectoBiblioteca.Menus_biblioteca
                     mostrarMenu = false;
                 }
             }
+
         }
     }
 }
