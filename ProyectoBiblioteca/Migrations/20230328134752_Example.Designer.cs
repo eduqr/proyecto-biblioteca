@@ -10,13 +10,8 @@ using ProyectoBiblioteca.Context;
 namespace ProyectoBiblioteca.Migrations
 {
     [DbContext(typeof(ConexionBD))]
-<<<<<<<< HEAD:ProyectoBiblioteca/Migrations/20230328033246_ejemplo.Designer.cs
-    [Migration("20230328033246_ejemplo")]
-    partial class ejemplo
-========
-    [Migration("20230328050739_Example")]
+    [Migration("20230328134752_Example")]
     partial class Example
->>>>>>>> 5b94b5ce0101635335b658ad2025b405c012a8b6:ProyectoBiblioteca/Migrations/20230328050739_Example.Designer.cs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -73,8 +68,10 @@ namespace ProyectoBiblioteca.Migrations
 
             modelBuilder.Entity("ProyectoBiblioteca.Contenedor.Prestamo", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Alumno")
                         .HasColumnType("nvarchar(max)");

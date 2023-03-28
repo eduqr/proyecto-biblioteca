@@ -65,13 +65,13 @@ namespace ProyectoBiblioteca.CRUD
                     Console.Write("\t> ");
                 }
                 prestamo.TituloLibroPrestado = valorIngresado;
-
+                
                 prestamo.FechaPedido = DateTime.Now;
                 prestamo.FechaRegreso = prestamo.FechaPedido.AddDays(3);
-                
+
                 _context.Prestamo.Add(prestamo);
                 _context.SaveChanges();
-                
+
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine();
                 Console.WriteLine("\t" + "PRÉSTAMO REGISTRADO CORRECTAMENTE");
@@ -168,6 +168,13 @@ namespace ProyectoBiblioteca.CRUD
                     Console.WriteLine("\t" + "PRÉSTAMO REGISTRADO CORRECTAMENTE");
                     Console.ResetColor();
                 }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\n\tNO EXISTE UN PRÉSTAMO ASOCIADO A LA MATRÍCULA PROPORCIONADA");
+                    Console.ResetColor();
+                    //DecoradorConsola.OpcionRegresarMenu();
+                }
             }
         }
 
@@ -242,9 +249,9 @@ namespace ProyectoBiblioteca.CRUD
                 {
                     Console.WriteLine($"\tID: \t\t{item.Id}");
                     Console.WriteLine($"\tAlumno: \t{item.Alumno}");
-                    Console.WriteLine($"\tMatrícula: \t\t{item.Matricula}");
-                    Console.WriteLine($"\tCorreo: \t\t{item.Correo}");
-                    Console.WriteLine($"\tLibro prestado: \t{item.TituloLibroPrestado}");
+                    Console.WriteLine($"\tMatrícula: \t{item.Matricula}");
+                    Console.WriteLine($"\tCorreo: \t{item.Correo}");
+                    Console.WriteLine($"\tLibro prestado: {item.TituloLibroPrestado}");
                     Console.WriteLine($"\tFecha pedido: \t{item.FechaPedido}");
                     Console.WriteLine($"\tFecha regreso: \t{item.FechaRegreso}");
                     Console.WriteLine("\t---------------------------------");

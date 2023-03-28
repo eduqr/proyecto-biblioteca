@@ -13,7 +13,7 @@ namespace ProyectoBiblioteca
             SystemLogin systemLogin = new SystemLogin();
             
             systemLogin.menuAccess();
-            menu.MenuInicio();
+            //menu.MenuInicio();
         }
     }
 }
