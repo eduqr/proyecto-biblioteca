@@ -5,6 +5,7 @@ using ProyectoBiblioteca.CRUD;
 using ProyectoBiblioteca.Menus_biblioteca;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -39,6 +40,7 @@ namespace ProyectoBiblioteca.Clases
                 }
                 else
                 {
+                    Console.Clear();
                     Console.WriteLine("Nombre de usuario o contraseña incorrectos.");
                     retorna.retornalogin();
 
