@@ -168,6 +168,13 @@ namespace ProyectoBiblioteca.CRUD
                     Console.WriteLine("\t" + "PRÉSTAMO REGISTRADO CORRECTAMENTE");
                     Console.ResetColor();
                 }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\n\tNO EXISTE UN PRÉSTAMO ASOCIADO A LA MATRÍCULA PROPORCIONADA");
+                    Console.ResetColor();
+                    //DecoradorConsola.OpcionRegresarMenu();
+                }
             }
         }
 

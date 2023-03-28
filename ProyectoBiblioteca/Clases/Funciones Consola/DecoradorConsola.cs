@@ -93,7 +93,7 @@ namespace ProyectoBiblioteca.Clases.Funciones_Consola
 
         public static void RecuadroMenu()
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine();
             Console.WriteLine("\t\t\t\t" + "+--------------+");
             Console.WriteLine("\t\t\t\t" + "|     Menú     |");
@@ -144,7 +144,7 @@ namespace ProyectoBiblioteca.Clases.Funciones_Consola
             int time = 15;
             while (time > 0)
             {
-                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.ForegroundColor = ConsoleColor.Gray;
                 Console.Write($"\r\t\t\t\t\t\t[{secuencia[index]}]");
                 Thread.Sleep(70);
                 index++;
@@ -166,24 +166,20 @@ namespace ProyectoBiblioteca.Clases.Funciones_Consola
             switch (num)
             {
                 case 0:
-                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
                     string dibujoASCII = @"
-                                         _.-""\
-                                     _.-""     \
-                                  ,-""          \
-                                 ( \            \
-                                  \ \            \
-                                   \ \            \
-                                    \ \         _.-;
-                                     \ \    _.-""   :
-                                      \ \,-""    _.-""
-                                       \(   _.-"" 
-                                       `--""";
+                         __...--~~~~~-._   _.-~~~~~--...__
+                       //               `V'               \\ 
+                      //                 |                 \\ 
+                     //__...--~~~~~~-._  |  _.-~~~~~~--...__\\ 
+                    //__.....----~~~~._\ | /_.~~~~----.....__\\
+                   ====================\\|//====================
+                                       `---` ";
                     Console.WriteLine(dibujoASCII);
                     Console.ResetColor();
                     break;
                 case 1:
-                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
                     dibujoASCII = @"
                                .--.                   .---.
                            .---|__|           .-.     |~~~|
@@ -199,18 +195,31 @@ namespace ProyectoBiblioteca.Clases.Funciones_Consola
                     Console.ResetColor();
                     break;
                 case 2:
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                    dibujoASCII = @"
+                        
+                       (\ 
+                       \'\ 
+                        \'\     __________  
+                        / '|   ()_________)
+                        \ '/    \ ~~~~~~~~ \
+                         \       \ ~~~~~~   \
+                        ==).      \__________\
+                       (__)       ()__________)";
+                    Console.WriteLine(dibujoASCII);
+                    Console.ResetColor();
                     break;
                 case 3:
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     dibujoASCII = @"
-
-
-                            ______ ______
-                          _/      Y      \_
-                         // ~~ ~~ | ~~ ~  \\
-                        // ~ ~ ~~ | ~~~ ~~ \\      Hasta luego!!
-                       //________.|.________\\    
-                     `----------`-'----------' ";
+                                  _ _
+                             .-. | | |
+                             |M|_|A|N|
+                             |A|a|.|.|<\
+                             |T|r| | | \\
+                             |H|t|M|Z|  \\      ""BiblioPolis"" 
+                             | |!| | |   \>     
+                        ";
                     Console.WriteLine(dibujoASCII);
                     Console.ResetColor();
                     break;
