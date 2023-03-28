@@ -20,7 +20,7 @@ namespace ProyectoBiblioteca.CRUD
                 Libros libro = new Libros();
                 string valorIngresado;
 
-                FuncionesConsola.EstablecerTituloConsola($"Agregando libro");
+                FuncionesConsola.EstablecerTituloConsola($"Agregar libro");
 
                 Console.WriteLine("\n\t" + "Ingrese el título del libro:");
                 Console.Write("\t> ");
@@ -105,6 +105,7 @@ namespace ProyectoBiblioteca.CRUD
         {
             using (var _context = new ConexionBD())
             {
+                FuncionesConsola.EstablecerTituloConsola("Inventario");
                 var cantidadLibros = _context.Libros.Count();
                 if (cantidadLibros == 0)
                 {
@@ -137,7 +138,7 @@ namespace ProyectoBiblioteca.CRUD
         {
             using (var _context = new ConexionBD())
             {
-
+                FuncionesConsola.EstablecerTituloConsola("Edición registro");
                 var cantidadLibros = _context.Libros.Count();
                 if (cantidadLibros == 0)
                 {
@@ -245,6 +246,7 @@ namespace ProyectoBiblioteca.CRUD
         {
             using (var _context = new ConexionBD())
             {
+                FuncionesConsola.EstablecerTituloConsola("Eliminar registro");
                 var cantidadLibros = _context.Libros.Count();
                 if (cantidadLibros == 0)
                 {

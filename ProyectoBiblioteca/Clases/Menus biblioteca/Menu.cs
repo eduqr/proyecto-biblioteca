@@ -17,7 +17,7 @@ namespace ProyectoBiblioteca.Menus_biblioteca
         MenuRegistro menuRegistro = new MenuRegistro();
         public void MenuInicio()
         {
-            string[] opciones = { "Gestionar biblioteca", "Ver catálogo de libros", "Salir" };
+            string[] opciones = { "Gestionar biblioteca", "Ver catálogo de libros", "Gestionar préstamo", "Salir" };
             int opcionSeleccionada = 0;
             bool mostrarMenu = true;
             bool nuevaOpcionSeleccionada = true;
@@ -85,6 +85,9 @@ namespace ProyectoBiblioteca.Menus_biblioteca
                             MenuInicio();
                             break;
                         case 2:
+                            DecoradorConsola.PantallaCarga();
+                            break;
+                        case 3:
                             FuncionesConsola.Salir();
                             break;
                         default:

@@ -16,5 +16,6 @@ namespace ProyectoBiblioteca.Context
         }
 
         public DbSet<Libros> Libros { get; set; }
+        public DbSet<Prestamo> Prestamo { get; set; }
     }
 }
