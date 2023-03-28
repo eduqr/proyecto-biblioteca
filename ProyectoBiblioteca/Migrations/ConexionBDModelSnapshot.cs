@@ -18,6 +18,24 @@ namespace ProyectoBiblioteca.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
+            modelBuilder.Entity("ProyectoBiblioteca.Contenedor.Administrador", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Contraseña")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Usuario")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Administrador");
+                });
+
             modelBuilder.Entity("ProyectoBiblioteca.Contenedor.Libros", b =>
                 {
                     b.Property<int>("Id")

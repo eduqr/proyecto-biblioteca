@@ -9,8 +9,8 @@ using ProyectoBiblioteca.Context;
 namespace ProyectoBiblioteca.Migrations
 {
     [DbContext(typeof(ConexionBD))]
-    [Migration("20230327220546_Example")]
-    partial class Example
+    [Migration("20230328033246_ejemplo")]
+    partial class ejemplo
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -19,6 +19,24 @@ namespace ProyectoBiblioteca.Migrations
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
+
+            modelBuilder.Entity("ProyectoBiblioteca.Contenedor.Administrador", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Contraseña")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Usuario")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Administrador");
+                });
 
             modelBuilder.Entity("ProyectoBiblioteca.Contenedor.Libros", b =>
                 {

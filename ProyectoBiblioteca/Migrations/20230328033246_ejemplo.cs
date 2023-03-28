@@ -2,10 +2,24 @@
 
 namespace ProyectoBiblioteca.Migrations
 {
-    public partial class Example : Migration
+    public partial class ejemplo : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Administrador",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Usuario = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Contraseña = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Administrador", x => x.id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Libros",
                 columns: table => new
@@ -26,6 +40,9 @@ namespace ProyectoBiblioteca.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Administrador");
+
             migrationBuilder.DropTable(
                 name: "Libros");
         }
