@@ -28,7 +28,7 @@ namespace ProyectoBiblioteca.Clases
                 Console.WriteLine("Nombre de usuario: ");
                 string usuario = Console.ReadLine();
 
-                Console.WriteLine("Contraseña: ");
+                Console.WriteLine("Ingresa Contraseña: ");
                 string contraseña = Console.ReadLine();
 
                 var adminq = _context.Administrador.FirstOrDefault(a => a.Usuario == usuario && a.Contraseña == contraseña);
