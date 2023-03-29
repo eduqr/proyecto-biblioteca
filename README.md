@@ -5,6 +5,7 @@
 * Eduardo R.
 * Adrián V.
 * Alejandra C.
+* Dominic V.
 
 ## Información útil
 
