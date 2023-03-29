@@ -19,34 +19,65 @@ namespace ProyectoBiblioteca.Clases
 
         public void menuAccess()
         {
+            CrudAdmin.CrearCredenciales();
+            FuncionesConsola.EstablecerTituloConsola("Inicio de sesión");
+            FuncionesConsola.MostrarVersion();
+            DecoradorConsola.RecuadroTituloBiblioteca();
             CrudAdmin retorna = new CrudAdmin();
             Menu menu = new Menu();
             using (var _context = new ConexionBD())
             {
 
                 Administrador admin = new Administrador();
-                Console.WriteLine("Nombre de usuario: ");
+                
+                DecoradorConsola.RecuadroInicioSesion();
+                Console.SetCursorPosition(35, 11);
                 string usuario = Console.ReadLine();
-
-                Console.WriteLine("Ingresa Contraseña: ");
-                string contraseña = Console.ReadLine();
+                
+                Console.SetCursorPosition(38, 13);
+                string contraseña = convertPassword();
 
                 var adminq = _context.Administrador.FirstOrDefault(a => a.Usuario == usuario && a.Contraseña == contraseña);
 
                 if (adminq != null)
                 {
-                    Console.WriteLine("Bienvenido, " + admin.Usuario);
-                    menu.MenuInicio();
+                    DecoradorConsola.OpcionIngresar();
+                    FuncionesConsola.Continuar();
+                    DecoradorConsola.MensajeAceptado();
+                    FuncionesConsola.Continuar();
+                    menu.MenuInicio();   
                 }
                 else
                 {
-                    Console.Clear();
-                    Console.WriteLine("Nombre de usuario o contraseña incorrectos.");
+                    DecoradorConsola.OpcionIngresar();
+                    FuncionesConsola.Continuar();
+                    DecoradorConsola.MensajeRechazado();
+                    FuncionesConsola.Continuar();
                     retorna.retornalogin();
 
 
                 }
             }
+        }
+
+        public string convertPassword()
+        {
+            ConsoleKeyInfo teclaUsuario;
+            string contra = "";
+            while ((teclaUsuario = Console.ReadKey(true)).Key != ConsoleKey.Enter)
+            {
+                if (teclaUsuario.Key == ConsoleKey.Backspace && contra.Length > 0)
+                {
+                    contra = contra.Remove(contra.Length - 1);
+                    Console.Write("\b \b"); // borra asterisco
+                }
+                else if (char.IsLetterOrDigit(teclaUsuario.KeyChar))
+                {
+                    contra += teclaUsuario.KeyChar;
+                    Console.Write("*");
+                }
+            }
+            return contra;
         }
     }
 

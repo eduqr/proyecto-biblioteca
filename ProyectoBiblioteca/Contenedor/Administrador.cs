@@ -9,8 +9,7 @@ namespace ProyectoBiblioteca.Contenedor
 {
     public class Administrador
     {
-        [Key]
-        public int id { get; set; }
+        [Key] public int id { get; set; }
 
         public string Usuario { get; set; }
 

@@ -16,15 +16,23 @@ namespace ProyectoBiblioteca.CRUD
         
         public void retornalogin()
         {
-            Administrador admin = new Administrador();
-            using (var _context = new ConexionBD()) 
-            {
-                admin.Usuario = "admin";
-                admin.Contraseña = "admin";
-                _context.Administrador.Add(admin);
-                _context.SaveChanges();
-            }
             sistema.menuAccess();
+        }
+
+        public static void CrearCredenciales()
+        {
+            Administrador admin = new Administrador();
+            using (var _context = new ConexionBD())
+            {
+                var cantidadLogins = _context.Administrador.Count();
+                if (cantidadLogins == 0)
+                {
+                    admin.Usuario = "admin";
+                    admin.Contraseña = "admin";
+                    _context.Administrador.Add(admin);
+                    _context.SaveChanges();
+                }
+            }
         }
     }
 }

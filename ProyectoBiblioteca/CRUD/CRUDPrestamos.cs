@@ -72,7 +72,7 @@ namespace ProyectoBiblioteca.CRUD
                 _context.Prestamo.Add(prestamo);
                 _context.SaveChanges();
 
-                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine();
                 Console.WriteLine("\t" + "PRÉSTAMO REGISTRADO CORRECTAMENTE");
                 Console.ResetColor();
@@ -180,7 +180,7 @@ namespace ProyectoBiblioteca.CRUD
 
         public void EliminarPrestamo()
         {
-            FuncionesConsola.EstablecerTituloConsola("Editar préstamo");
+            FuncionesConsola.EstablecerTituloConsola("Eliminar préstamo");
 
             using (var _context = new ConexionBD())
             {
@@ -206,7 +206,6 @@ namespace ProyectoBiblioteca.CRUD
                 }
 
                 Prestamo prestamo = _context.Prestamo.FirstOrDefault(c => c.Matricula == matricula);
-                FuncionesConsola.EstablecerTituloConsola($"Eliminando préstamo de {matricula}");
 
                 if(prestamo != null )
                 {

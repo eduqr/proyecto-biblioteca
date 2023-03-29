@@ -9,8 +9,7 @@ namespace ProyectoBiblioteca.Contenedor
 {
     public class Prestamo
     {
-        [Key] 
-        public int Id { get; set; }
+        [Key] public int Id { get; set; }
         
         public string Alumno { get; set; }
 

@@ -88,7 +88,6 @@ namespace ProyectoBiblioteca.Menus_biblioteca
                         case 2:
                             DecoradorConsola.PantallaCarga();
                             menuPrestamo.MenuPrestamos();
-
                             break;
                         case 3:
                             FuncionesConsola.Salir();

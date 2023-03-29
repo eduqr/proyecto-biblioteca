@@ -20,11 +20,11 @@ namespace ProyectoBiblioteca.Clases.Funciones_Consola
             //Console.WriteLine("\t\t\t\t" + "|                            |");
             //Console.WriteLine("\t\t\t\t" + "+----------------------------+");
 
-            TextoAnimado(2,("\n\t\t\t\t"  + "+----------------------------+"));
-            TextoAnimado(2,("\n\t\t\t\t"  + "|                            |"));
+            TextoAnimado(1,("\n\t\t\t\t"  + "+----------------------------+"));
+            TextoAnimado(1,("\n\t\t\t\t"  + "|                            |"));
             TextoAnimado(30,("\n\t\t\t\t" + "|        BiblioPolis         |"));
-            TextoAnimado(2,("\n\t\t\t\t"  + "|                            |"));
-            TextoAnimado(2,("\n\t\t\t\t"  + "+----------------------------+"));
+            TextoAnimado(1,("\n\t\t\t\t"  + "|                            |"));
+            TextoAnimado(1,("\n\t\t\t\t"  + "+----------------------------+"));
             Console.WriteLine();
             Console.ResetColor();
         }
@@ -144,7 +144,7 @@ namespace ProyectoBiblioteca.Clases.Funciones_Consola
             int time = 15;
             while (time > 0)
             {
-                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.Write($"\r\t\t\t\t\t\t[{secuencia[index]}]");
                 Thread.Sleep(70);
                 index++;
