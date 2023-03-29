@@ -16,7 +16,6 @@ namespace ProyectoBiblioteca.Clases
     public class SystemLogin
     {
 
-
         public void menuAccess()
         {
             CrudAdmin.CrearCredenciales();
@@ -27,7 +26,6 @@ namespace ProyectoBiblioteca.Clases
             Menu menu = new Menu();
             using (var _context = new ConexionBD())
             {
-
                 Administrador admin = new Administrador();
                 
                 DecoradorConsola.RecuadroInicioSesion();
@@ -42,7 +40,11 @@ namespace ProyectoBiblioteca.Clases
                 if (adminq != null)
                 {
                     DecoradorConsola.OpcionIngresar();
-                    FuncionesConsola.Continuar();
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.WriteLine("\t\t\t\t" + "Presione 'Enter' para continuar");
+                    Console.ReadKey(true);
+                    Console.ResetColor();
+                    Console.Clear();
                     DecoradorConsola.MensajeAceptado();
                     FuncionesConsola.Continuar();
                     menu.MenuInicio();   
@@ -80,5 +82,4 @@ namespace ProyectoBiblioteca.Clases
             return contra;
         }
     }
-
 }
